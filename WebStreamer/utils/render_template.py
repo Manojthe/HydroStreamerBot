@@ -1,5 +1,5 @@
 # This file is a part of FileStreamBot
-
+import jinja2
 import aiohttp
 import aiofiles
 import urllib.parse
@@ -27,5 +27,14 @@ async def render_page(db_id):
                 async with s.get(src) as u:
                     heading = 'Download {}'.format(file_data['file_name'])
                     file_size = humanbytes(int(u.headers.get('Content-Length')))
-                    html = (await r.read()) % (heading, file_data['file_name'], src, file_size)
-    return html
+                    with open(template_file) as f:
+        template = jinja2.Template(f.read())
+
+    file_name = file_data.file_name.replace("_", " ")
+
+    return template.render(
+        file_name=file_name,
+        file_url=src,
+        file_size=file_size,
+        file_unique_id=file_data.unique_id,
+    )
