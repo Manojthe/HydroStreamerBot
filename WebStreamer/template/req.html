@@ -78,6 +78,7 @@
 
         const currentUrl = window.location.href;
         const finalUrl = currentUrl.replace("/watch/", "/dl/");
+        document.querySelector(".plyr source").src = finalUrl;
 
         function playOnline(player) {
             const playerUrls = {
