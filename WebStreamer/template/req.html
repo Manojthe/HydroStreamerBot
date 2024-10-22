@@ -17,6 +17,7 @@
     <div class="container">
         <header>
             <h1 id="file-name">%s</h1>
+            
         </header>
         <div class="player-container">
             <div class="video-wrapper">
@@ -28,6 +29,9 @@
         </div>
         <p class="unsupported-message">⚠️ If the video isn't playing, it might not be supported in the browser. Try in a video player.</p>
        <p>{{file_name}}</p>
+        <p><strong>File Name:</strong> %s</p>  <!-- %s will be replaced by the file name -->
+    <p><strong>File Size:</strong> %s</p>  <!-- %s will be replaced by the human-readable file size -->
+    
         <div class="controls">
             <div class="dropdown">
                 <button class="btn">
@@ -111,22 +115,3 @@
     </script>
 </body>
 </html>
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>%s</title>  <!-- %s will be replaced by the heading (e.g., Download {file_name}) -->
-</head>
-<body>
-    <h1>%s</h1>  <!-- %s will be replaced by the file name -->
-
-    <p><strong>File Name:</strong> %s</p>  <!-- %s will be replaced by the file name -->
-    <p><strong>File Size:</strong> %s</p>  <!-- %s will be replaced by the human-readable file size -->
-    
-    <a href="%s" download>Download %s</a>  <!-- %s (file URL) and %s (file name) will be replaced dynamically -->
-</body>
-</html>
-
