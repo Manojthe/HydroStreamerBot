@@ -46,6 +46,6 @@ class Var(object):
 #__________________SHORTENER FUNCTION_________________________________
     BOT_USERNAME = str(environ.get("BOT_USERNAME",""))
     VERIFY_TUTORIAL = str(environ.get("VERIFY_TUTORIAL",""))
-    VERIFY = environ.get("VERIFY",True) #if dont want shorterner make it false
+    VERIFY = environ.get("VERIFY",False) #if dont want shorterner make it false
     SHORT_API = str(environ.get("SHORT_API",""))
     SHORT_URL = str(environ.get("SHORT_URL",""))
