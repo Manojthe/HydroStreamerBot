@@ -1,115 +1,234 @@
-<!-- Code by fyaz05 -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta property="og:image" content="https://cdn.jsdelivr.net/gh/fyaz05/Resources@main/HydroStreamerBot/live.png">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{file_name}}</title>
-    <link rel="icon" href="https://cdn.jsdelivr.net/gh/fyaz05/Resources@main/HydroStreamerBot/Thunder.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fyaz05/Resources@main/HydroStreamerBot/reqStyles.css">
-<body>
-    <div class="container">
-        <header>
-            <h1 id="file-name">{{file_name}}</h1>
-            
-        </header>
-        <div class="player-container">
-            <div class="video-wrapper">
-                <video class="plyr" controls poster="https://cdn.jsdelivr.net/gh/fyaz05/Resources@main/HydroStreamerBot/videobg.jpg" alt="Video Player Poster Image">
-                    <source src="{{src}}" type="video/mp4" alt="Video Source">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-        </div>
-        <p class="unsupported-message">⚠️ If the video isn't playing, it might not be supported in the browser. Try in a video player.</p>
-       <p>{{tag}}</p>
+ 
+    <!-- Twilight CSS for Styling -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/twilight.min.css">
+ 
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Plyr CSS -->
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.8/plyr.css" />
+
+    <!-- Custom CSS for Page Styling -->
+    <style>
+        * {
+            box-sizing: border-box; /* Ensure padding does not affect total width/height */
+        }
+ 
+        html, body {
+            height: 100%; /* Ensure body takes full height */
+            margin: 0; /* Remove default margin */
+            display: flex; /* Use flexbox layout */
+            flex-direction: column; /* Stack children vertically */
+        }
+ 
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1e1e1e;
+            color: #f8f8f2;
+        }
+ 
+        header {
+            background-color: #282828; /* Header background color */
+            color: #ffffff;
+            padding: 10px;
+            text-align: center;
+        }
+ 
+        header h1 {
+            margin: 0;
+        }
+ 
+        .main-container {
+            flex: 1; /* Allow the main container to grow and fill available space */
+            padding: 20px; /* Add padding around main content */
+            overflow: auto; /* Allow scrolling if content overflows */
+        }
+ 
+        .content {
+            margin-bottom: 20px; /* Space between content sections */
+        }
+ 
+        .card {
+            background-color: #282828; /* Card background color */
+            border-radius: 5px; /* Rounded corners */
+            padding: 10px; /* Padding inside the card */
+            margin: 20px 0; /* Margin around the card */
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2); /* Shadow effect */
+        }
+
+        .card h3 {
+            margin: 0; /* Remove default margin */
+        }
+
+        footer {
+            background-color: #282828; /* Footer background color */
+            color: #ffffff;
+            padding: 15px;
+            text-align: center;
+            position: relative; /* Allows stacking in the document flow */
+            height: 10%; /* Set footer height to 10% of the viewport height */
+            display: flex; /* Use flexbox to align content */
+            align-items: center; /* Center items vertically */
+            justify-content: center; /* Center items horizontally */
+        }
+ 
+        .footer-buttons {
+            display: flex; /* Use flexbox to align buttons */
+            justify-content: space-between; /* Space between buttons */
+            width: 100%; /* Make footer buttons take full width */
+            max-width: 600px; /* Optional: limit max width */
+        }
+ 
+        .button {
+            color: white; /* Button text color */
+            border: 0px solid white; /* White stroke */
+            border-radius: 5px; /* Rounded corners */
+            padding: 12px; /* Padding for buttons */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background-color 0.3s; /* Smooth transition */
+            display: flex; /* Use flex for icon alignment */
+            align-items: center; /* Center icon vertically */
+            justify-content: center; /* Center icon horizontally */
+            margin: 5px; /* Margin around buttons */
+            text-decoration: none;
+        }
+ 
+        .button:first-child {
+            background-color: #9C27B0; /* Color for Download button */
+            flex: 0 0 85%; /* Set width to 80% */
+        }
+ 
+        .button:last-child {
+            background-color: #2196F3; /* Color for Share button */
+            flex: 0 0 10%; /* Set width to 17% */
+        }
+ 
+        .button:hover {
+            opacity: 0.8; /* Slightly transparent on hover */
+        }
+ 
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header, footer {
+                font-size: 14px;
+            }
+        }
+ 
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 20px;
+            }
+ 
+            footer p {
+                font-size: 12px;
+            }
+ 
+            .button {
+                font-size: 12px; /* Smaller font size for buttons */
+            }
+        }
         
-        <div class="controls">
-            <div class="dropdown">
-                <button class="btn">
-                    <i class="fas fa-play-circle"></i> Stream
-                </button>
-                <div class="dropdown-content">
-                    <a href="#" onclick="playOnline('vlc')">
-                        <img src="https://cdn.jsdelivr.net/gh/fyaz05/Resources@main/HydroStreamerBot/vlc.png" alt="VLC Mobile" class="player-logo"> VLC Mobile
-                    </a>
-                    <a href="#" onclick="playOnline('mxp')">
-                        <img src="https://cdn.jsdelivr.net/gh/fyaz05/Resources@main/HydroStreamerBot/mx.png" alt="MX Player Pro" class="player-logo"> MX Player Pro
-                    </a>
-                    <a href="#" onclick="playOnline('mx')">
-                        <img src="https://cdn.jsdelivr.net/gh/fyaz05/Resources@main/HydroStreamerBot/mx.png" alt="MX Player" class="player-logo"> MX Player
-                    </a>
-                    <a href="#" onclick="playOnline('np')">
-                        <img src="https://cdn.jsdelivr.net/gh/fyaz05/Resources@main/HydroStreamerBot/nPlayer.webp" alt="nPlayer" class="player-logo"> nPlayer
-                    </a>
-                    <a href="#" onclick="playOnline('sp')">
-                        <img src="https://cdn.jsdelivr.net/gh/fyaz05/Resources@main/HydroStreamerBot/splayer.webp" alt="S Player" class="player-logo"> S Player
-                    </a>
-                    <a href="#" onclick="playOnline('km')">
-                        <img src="https://cdn.jsdelivr.net/gh/fyaz05/Resources@main/HydroStreamerBot/km.webp" alt="KM Player" class="player-logo"> KM Player
-                    </a>
-                </div>
-            </div>
-            <button class="btn download" onclick="download()">
-                <i class="fas fa-cloud-download-alt"></i> Download
-            </button>
-            <button class="btn copy-link" onclick="copyLink()">
-                <i class="fas fa-link"></i> Copy Link
-            </button>
+        
+        
+      .chip-container {
+    display: flex; /* Use flexbox for alignment */
+    flex-wrap: wrap; /* Allow chips to wrap */
+    gap: 10px; /* Space between chips */
+}
+
+.chip {
+    padding: 10px 15px; /* Padding inside the chip */
+    border-radius: 20px; /* Rounded corners */
+    color: white; /* Text color */
+    font-weight: bold; /* Bold text */
+    font-size: 8px; /* Change the text size here */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Lighter elevation shadow */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-width: 1px; 
+    border-style: solid;
+    transition: transform 0.2s; /* Smooth transform on hover */
+}
+
+
+.chip:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+
+
+h3 {
+            overflow-wrap: break-word; /* Break long words to fit within container */
+            margin: 0; /* Remove default margin */
+            padding: 10px 0; /* Space around heading */
+            font-size: 1.2em; /* Adjust font size as needed */
+            text-align: left; /* Align text to the left */
+        }
+
+
+    </style>
+</head>
+<body>
+ 
+    <!-- Header -->
+    <header>
+        <h1>File To Link Bot</h1>
+    </header>
+ 
+    <!-- Main Container -->
+    <div class="main-container">
+        <div class="content-vid">
+            
+            <video id="player" controls>
+                <source src="http://stream-manojthe.koyeb.app/dl/671766e0fbbde72ee045e9d8" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
+        <div class="content">
+            <h3>{{file_name}}</h3>
+            
+            
+                <div class="chip-container">
+        <div class="chip" style="border-color: #33c1ff;">450Mb</div>
+        <div class="chip" style="border-color: #33c1ff;">Video</div>
+                <div class="chip" style="border-color: #33c1ff;">MKV</div>
+        
     </div>
+            
+            
+            
+            
+            <div class="card">
+                <h3>File Info</h3>
+                <hr style="border: 1px solid #f8f8f2; opacity: 0.5;"/>
+                <p><strong>File Size:</strong> {{file_size}}</p>
+                <p><strong>File Type:</strong> {{tag}}</p>
+                <p><strong>File Id:</strong> Not Found</p>
+            </div>
+        </div>
+        
+    </div>
+ 
+    <!-- Footer -->
     <footer>
-        <!-- Replace the below link with your link -->
-        <a href="https://t.me/botsupports_og" target="_blank">
-            <i class="fab fa-telegram-plane"></i> Join our Telegram channel
-        </a>
+        <div class="footer-buttons">
+<a href="{{scr}}" class="button" download>
+                <i class="fas fa-download"></i> Download File
+            </a>
+            <button class="button"><i class="fas fa-share-alt"></i></button>
+        </div>
     </footer>
-
-    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+    
+    <!-- Plyr JS -->
+    <script src="https://cdn.plyr.io/3.6.8/plyr.polyfilled.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const videoElement = document.querySelector('.plyr');
-            new Plyr(videoElement);
-        });
-
-        const currentUrl = window.location.href;
-        const finalUrl = currentUrl.replace("/watch/", "/dl/");
-        document.querySelector(".plyr source").src = finalUrl;
-
-        function playOnline(player) {
-            const playerUrls = {
-                vlc: `vlc://${finalUrl}`,
-                mxp: `intent:${finalUrl}#Intent;package=com.mxtech.videoplayer.pro;end`,
-                mx: `intent:${finalUrl}#Intent;package=com.mxtech.videoplayer.ad;end`,
-                np: `nplayer-${finalUrl}`,
-                sp: `intent:${finalUrl}#Intent;action=com.young.simple.player.playback_online;package=com.young.simple.player;end`,
-                km: `intent:${finalUrl}#Intent;package=com.kmplayer;end`
-            };
-            window.location.href = playerUrls[player] || finalUrl;
-        }
-
-        function download() {
-            window.location.href = finalUrl;
-        }
-
-        function copyLink() {
-            navigator.clipboard.writeText(finalUrl)
-                .then(() => {
-                    const feedback = document.createElement('div');
-                    feedback.className = 'feedback';
-                    feedback.textContent = "📋 Link copied to clipboard!";
-                    feedback.setAttribute("role", "alert");
-                    document.body.appendChild(feedback);
-                    setTimeout(() => feedback.remove(), 3000);
-                })
-                .catch(err => console.error('Could not copy text: ', err));
-        }
+        const player = new Plyr('#player');
     </script>
+ 
 </body>
 </html>
