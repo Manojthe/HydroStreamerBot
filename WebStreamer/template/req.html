@@ -185,7 +185,7 @@ h3 {
         <div class="content-vid">
             
             <video id="player" controls>
-                <source src="{{src}}" type="video/mp4">
+                <source src="{{file_url}}" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
@@ -208,7 +208,7 @@ h3 {
                 <hr style="border: 1px solid #f8f8f2; opacity: 0.5;"/>
                 <p><strong>File Size:</strong> {{file_size}}</p>
                 <p><strong>File Type:</strong> {{tag}}</p>
-                <p><strong>File Id:</strong> Not Found</p>
+                <p><strong>File Id:</strong> {{src}}</p>
             </div>
         </div>
         
@@ -217,7 +217,7 @@ h3 {
     <!-- Footer -->
     <footer>
         <div class="footer-buttons">
-<a href="{{src}}" class="button" download>
+<a href="{{file_url}}" class="button" download>
                 <i class="fas fa-download"></i> Download File
             </a>
             <button class="button"><i class="fas fa-share-alt"></i></button>
