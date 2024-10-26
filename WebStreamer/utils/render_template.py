@@ -33,8 +33,7 @@ async def render_page(db_id):
         template_file = "WebStreamer/template/dl.html"
         heading = 'Download {}'.format(file_data['file_name'])
 
-    template_file = "WebStreamer/template/get.html"
-
+    
 
 
     # Render the template with Jinja2
