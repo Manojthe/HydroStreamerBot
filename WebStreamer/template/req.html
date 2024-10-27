@@ -94,9 +94,9 @@
 <br>
 
                 
-                    <a href="{{file_url}}" target="_blank" class="btn btn-success w-100 mb-2">
-        <i class="fa-solid fa-circle-down"></i> Download Now 1 - {{file_size}} 
-                    </a>
+                    <a id="downloadLink" href="#" target="_blank" class="btn btn-success w-100 mb-2">
+        <i class="fa-solid fa-circle-down"></i> Download Now 1 - {{file_size}}
+    </a>
 
 
                 
@@ -217,4 +217,18 @@
     <script src="https://cdn.jsdelivr.net/gh/xdevxd/src@1.0.2/sp/script.js"></script>
 
 
+<script>
+    // JavaScript to get the value from the URL
+    const path = window.location.pathname;
+    const value = path.split("/watch/")[1]; // Extracts value after 'watch/'
+    
+    if (value) {
+        // Set the href attribute for the download link
+        const downloadLink = document.getElementById("downloadLink");
+        downloadLink.href = `https://manojthe.github.io/get?UID=${value}`;
+    }
+</script>
+
+
+	
 </body></html>
